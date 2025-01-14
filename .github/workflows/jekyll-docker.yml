@@ -1,12 +1,14 @@
-name: MarcelMonde.pub
-
+git innit
+git merge main branch
+git setup Master branch
+git push
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "Main" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "Master" ]
 
-jobs:
+jobs: 
   build:
 
     runs-on: ubuntu-latest

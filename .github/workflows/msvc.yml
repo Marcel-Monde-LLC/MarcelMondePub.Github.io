@@ -40,13 +40,13 @@ jobs:
         run: cmake -B ${{ env.build }}
 
       # Build is not required unless generated source files are used
+      # Uncomment if needed
       # - name: Build CMake
       #   run: cmake --build ${{ env.build }}
 
       - name: Initialize MSVC Code Analysis
-        uses: microsoft/msvc-code-analysis-action@04825f6d9e00f87422d6bf04e1a38b1f3ed60d99
-        
-        id: 0009-0001-4661-2032
+        uses: microsoft/msvc-code-analysis-action@v1 # Use stable tag instead of commit hash
+        id: run-analysis
         with:
           cmakeBuildDirectory: ${{ env.build }}
           # Ruleset file that will determine what checks will be run
@@ -58,7 +58,7 @@ jobs:
         with:
           sarif_file: ${{ steps.run-analysis.outputs.sarif }}
 
-      # Upload SARIF file as an Artifact to download and view
+      # Uncomment if you want to upload SARIF as an Artifact
       # - name: Upload SARIF as an Artifact
       #   uses: actions/upload-artifact@v3
       #   with:
